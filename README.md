@@ -1,7 +1,9 @@
-## Xamp install
+## 1. Xampp install
 
-## Set up environment in Xamp
+## 2. Set Project Root in Xampp
 
-## Run MySQL and Apache server
+## 3. Run Apache server
 
-## http://127.0.0.1
+## 4. Run MySQL server
+
+## 5. Run http://127.0.0.1
