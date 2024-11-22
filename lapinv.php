@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_selected'])) {
 // Handle update row
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_row'])) {
     $id = intval($_POST['edit_id']);
-    $device_name = $conn->real_escape_string($_POST['device_name']);
+    $device_name = $conn->real_escape_string($_POST['Drvice_name']);
     $enrol_datex = $conn->real_escape_string($_POST['enrol_datex']);
     $device_type = $conn->real_escape_string($_POST['device_type']);
     $sn = $conn->real_escape_string($_POST['sn']);
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_row'])) {
     $skufamily = $conn->real_escape_string($_POST['skufamily']);
 
     $update_sql = "UPDATE Laptop_inventory SET 
-        device_name='$device_name', 
+        Drvice_name='$device_name', 
         enrol_datex='$enrol_datex', 
         device_type='$device_type', 
         sn='$sn', 
@@ -105,7 +105,7 @@ $result = $conn->query($sql);
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
                         <td><input type="checkbox" name="selected_ids[]" value="<?= $row['id'] ?>"></td>
-                        <td><?= htmlspecialchars($row['device_name']) ?></td>
+                        <td><?= htmlspecialchars($row['Drvice_name']) ?></td>
                         <td><?= htmlspecialchars($row['enrol_datex']) ?></td>
                         <td><?= htmlspecialchars($row['device_type']) ?></td>
                         <td><?= htmlspecialchars($row['sn']) ?></td>
@@ -116,7 +116,7 @@ $result = $conn->query($sql);
                         <td>
                             <button type="button" class="btn btn-warning btn-sm edit-btn" 
                                     data-id="<?= $row['id'] ?>"
-                                    data-device_name="<?= htmlspecialchars($row['device_name']) ?>"
+                                    data-device_name="<?= htmlspecialchars($row['Drvice_name']) ?>"
                                     data-enrol_datex="<?= htmlspecialchars($row['enrol_datex']) ?>"
                                     data-device_type="<?= htmlspecialchars($row['device_type']) ?>"
                                     data-sn="<?= htmlspecialchars($row['sn']) ?>"
@@ -148,7 +148,7 @@ $result = $conn->query($sql);
                     <input type="hidden" name="edit_id" id="edit_id">
                     <div class="form-group">
                         <label>Device Name</label>
-                        <input type="text" name="device_name" id="edit_device_name" class="form-control">
+                        <input type="text" name="Drvice_name" id="edit_device_name" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Enroll Date</label>

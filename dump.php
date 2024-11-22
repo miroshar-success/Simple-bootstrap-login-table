@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 $show_success = false; // Flag to control the success message
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $device_name = $conn->real_escape_string($_POST['device_name']);
+    $device_name = $conn->real_escape_string($_POST['Drvice_name']);
     $enrol_datex = $conn->real_escape_string($_POST['enrol_datex']);
     $device_type = $conn->real_escape_string($_POST['device_type']);
     $sn = $conn->real_escape_string($_POST['sn']);
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Invalid email format.";
     } else {
         // Insert query
-        $sql = "INSERT INTO Laptop_inventory (device_name, enrol_datex, device_type, sn, manufacture, model, usr_email, usr_name, compliance, skufamily) 
+        $sql = "INSERT INTO Laptop_inventory (Drvice_name, enrol_datex, device_type, sn, manufacture, model, usr_email, usr_name, compliance, skufamily) 
                 VALUES ('$device_name', '$enrol_datex', '$device_type', '$sn', '$manufacture', '$model', '$usr_email', '$usr_name', '$compliance', '$skufamily')";
 
         if ($conn->query($sql) === TRUE) {
@@ -119,7 +119,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     <!-- Success Notification -->
     <?php if ($show_success): ?>
       <div id="success-notification" class="notification fade-in">
-          Success! Redirecting...
+          Success!
       </div>
       <script>
           // Automatically hide the notification after 5 seconds and redirect
@@ -133,7 +133,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
         <div class="form-group">
             <label for="device_name" class="col-sm-2 control-label">Device Name:</label>
             <div class="col-sm-10">
-                <input type="text" name="device_name" id="device_name" class="form-control" required>
+                <input type="text" name="Drvice_name" id="device_name" class="form-control" required>
             </div>
         </div>
         <div class="form-group">
