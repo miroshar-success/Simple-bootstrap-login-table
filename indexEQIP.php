@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: include/login.php"); // Redirect to login if not logged in
     exit;
 }
 
@@ -82,7 +82,7 @@ $result = $conn->query($sql);
         vertical-align: middle; /* Vertically align to middle for better alignment */
     }
 </style>
-<?php include 'navbar.php'; ?>
+<?php include 'include/navbar.php'; ?>
 <div class="container">
     <h2>Network Devices</h2>
     <form method="POST">

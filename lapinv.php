@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: include/login.php");
     exit;
 }
 
@@ -80,7 +80,7 @@ $result = $conn->query($sql);
         vertical-align: middle; /* Vertically align to middle for better alignment */
     }
 </style>
-<?php include 'navbar.php'; ?>
+<?php include 'include/navbar.php'; ?>
 
 <div class="container">
     <h2>Laptop Inventory</h2>
