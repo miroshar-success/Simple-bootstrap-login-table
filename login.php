@@ -38,9 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your custom CSS -->
 </head>
 <body>
-<div class="container">
+<?php include 'logo.php'; ?>
+<div class="container login">
     <h2>Login</h2>
     <form method="POST" action="">
         <div class="form-group">

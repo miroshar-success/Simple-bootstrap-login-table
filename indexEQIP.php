@@ -26,6 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_selected'])) {
     $conn->query($delete_sql);
 }
 
+// Handle deletion of a single row
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_single'])) {
+    $id = intval($_POST['delete_single']); // Sanitize the input
+    $delete_sql = "DELETE FROM networksallsites WHERE index_no = $id";
+    if ($conn->query($delete_sql) === TRUE) {
+        echo "<script>alert('Record deleted successfully!');</script>";
+    } else {
+        echo "<script>alert('Error deleting record: " . $conn->error . "');</script>";
+    }
+}
+
 // Handle update row
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_row'])) {
     $id = intval($_POST['edit_id']);
@@ -70,19 +81,12 @@ $result = $conn->query($sql);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your custom CSS -->
 </head>
 <body>
-<style>
-    #deviceTable tbody tr:hover {
-        background-color: #007bff; /* Highlight color */
-        color: white; /* Text contrast */
-    }
-    #deviceTable thead th {
-        text-align: center; /* Center-align text in all header cells */
-        vertical-align: middle; /* Vertically align to middle for better alignment */
-    }
-</style>
-<?php include 'include/navbar.php'; ?>
+
+<?php include 'logo.php'; ?>
+<?php include 'navbar.php'; ?>
 <div class="container">
     <h2>Network Devices</h2>
     <form method="POST">

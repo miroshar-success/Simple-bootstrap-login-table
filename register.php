@@ -48,6 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Automatically log in the user after registration
                     $_SESSION['user_id'] = $conn->insert_id;
                     $_SESSION['username'] = $username;
+                    header("Access-Control-Allow-Origin: *");
+                    header("Access-Control-Allow-Methods: POST");
+                    header("Access-Control-Allow-Headers: Content-Type");
+
                     header("Location: lapinv.php");
                     exit;
                 } else {
@@ -65,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
+<div class="container register">
     <h2 class="mt-4">Register</h2>
     <?php if ($message): ?>
         <div class="alert alert-warning"><?php echo htmlspecialchars($message); ?></div>

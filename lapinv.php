@@ -22,9 +22,21 @@ if ($conn->connect_error) {
 // Handle deletion of multiple rows
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_selected'])) {
     $ids = implode(",", array_map('intval', $_POST['selected_ids']));
-    $delete_sql = "DELETE FROM Laptop_inventory WHERE id IN ($ids)";
+    $delete_sql = "DELETE FROM laptop_inventory WHERE id IN ($ids)";
     $conn->query($delete_sql);
 }
+
+// Handle deletion of a single row
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_single'])) {
+    $id = intval($_POST['delete_single']); // Sanitize the input
+    $delete_sql = "DELETE FROM laptop_inventory WHERE id = $id";
+    if ($conn->query($delete_sql) === TRUE) {
+        echo "<script>alert('Record deleted successfully!');</script>";
+    } else {
+        echo "<script>alert('Error deleting record: " . $conn->error . "');</script>";
+    }
+}
+
 
 // Handle update row
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_row'])) {
@@ -38,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_row'])) {
     $usr_name = $conn->real_escape_string($_POST['usr_name']);
     $skufamily = $conn->real_escape_string($_POST['skufamily']);
 
-    $update_sql = "UPDATE Laptop_inventory SET 
+    $update_sql = "UPDATE laptop_inventory SET 
         Drvice_name='$device_name', 
         enrol_datex='$enrol_datex', 
         device_type='$device_type', 
@@ -52,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_row'])) {
 }
 
 // Fetch data for the table
-$sql = "SELECT * FROM Laptop_inventory";
+$sql = "SELECT * FROM laptop_inventory";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -68,6 +80,7 @@ $result = $conn->query($sql);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your custom CSS -->
 </head>
 <body>
 <style>
@@ -80,7 +93,9 @@ $result = $conn->query($sql);
         vertical-align: middle; /* Vertically align to middle for better alignment */
     }
 </style>
-<?php include 'include/navbar.php'; ?>
+
+<?php include 'logo.php'; ?>
+<?php include 'navbar.php'; ?>
 
 <div class="container">
     <h2>Laptop Inventory</h2>
@@ -98,6 +113,10 @@ $result = $conn->query($sql);
                     <th>MODEL</th>
                     <th>USER NAME</th>
                     <th>SKU FAMILY</th>
+                    <th>MANUFACTURE</th>
+                    <th>MODEL</th>
+                    <th>USER NAME</th>
+                    <th>SKU FAMILY</th>
                     <th style="width:80px;">ACTIONS</th>
                 </tr>
             </thead>
@@ -109,6 +128,10 @@ $result = $conn->query($sql);
                         <td><?= htmlspecialchars($row['enrol_datex']) ?></td>
                         <td><?= htmlspecialchars($row['device_type']) ?></td>
                         <td><?= htmlspecialchars($row['sn']) ?></td>
+                        <td><?= htmlspecialchars($row['manufacture']) ?></td>
+                        <td><?= htmlspecialchars($row['model']) ?></td>
+                        <td><?= htmlspecialchars($row['usr_name']) ?></td>
+                        <td><?= htmlspecialchars($row['skufamily']) ?></td>
                         <td><?= htmlspecialchars($row['manufacture']) ?></td>
                         <td><?= htmlspecialchars($row['model']) ?></td>
                         <td><?= htmlspecialchars($row['usr_name']) ?></td>

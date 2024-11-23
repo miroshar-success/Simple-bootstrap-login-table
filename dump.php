@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Invalid email format.";
     } else {
         // Insert query
-        $sql = "INSERT INTO Laptop_inventory (Drvice_name, enrol_datex, device_type, sn, manufacture, model, usr_email, usr_name, compliance, skufamily) 
+        $sql = "INSERT INTO laptop_inventory (Drvice_name, enrol_datex, device_type, sn, manufacture, model, usr_email, usr_name, compliance, skufamily) 
                 VALUES ('$device_name', '$enrol_datex', '$device_type', '$sn', '$manufacture', '$model', '$usr_email', '$usr_name', '$compliance', '$skufamily')";
 
         if ($conn->query($sql) === TRUE) {
@@ -63,42 +63,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-<style>
-  /* Notification container */
-  .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #28a745; /* Green background for success */
-      color: white; /* White text for contrast */
-      padding: 15px 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      font-size: 16px;
-      z-index: 1050;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 200px;
-      text-align: center;
-  }
-
-  /* Optional: Add an animation */
-  .notification.fade-in {
-      animation: fadeIn 0.5s ease-in-out;
-  }
-
-  @keyframes fadeIn {
-      from {
-          opacity: 0;
-          transform: translateY(-20px);
-      }
-      to {
-          opacity: 1;
-          transform: translateY(0);
-      }
-  }
-</style>
+<link rel="stylesheet" href="css/style.css"> <!-- Link to your custom CSS -->
 
 </head>
 <body>
