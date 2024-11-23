@@ -1,0 +1,18 @@
+# Enable RewriteEngine for URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect all requests to lapinv.php if the file or directory does not exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ lapinv.php [L]
+</IfModule>
+
+# Set default directory index
+DirectoryIndex lapinv.php
+
+# Deny access to sensitive files
+<FilesMatch "\.(env|htaccess|ini|log|sh|sql|bak)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

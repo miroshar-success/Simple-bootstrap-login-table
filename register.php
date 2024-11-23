@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Automatically log in the user after registration
                     $_SESSION['user_id'] = $conn->insert_id;
                     $_SESSION['username'] = $username;
-                    header("Location: /lapinv.php");
+                    header("Location: lapinv.php");
                     exit;
                 } else {
                     $message = "Error: " . $conn->error;
