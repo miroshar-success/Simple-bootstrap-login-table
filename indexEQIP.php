@@ -226,7 +226,7 @@ $(document).ready(function() {
     });
 
     // Fill modal with data for editing
-    $('.edit-btn').on('click', function() {
+    $('#deviceTable').on('click', '.edit-btn', function() {
         const data = $(this).data();
         $('#edit_id').val(data.id);
         $('#edit_name').val(data.name);

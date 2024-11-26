@@ -234,8 +234,8 @@ $(document).ready(function() {
         }
     });
 
-    // Fill modal with data for editing
-    $('.edit-btn').on('click', function() {
+    // Use event delegation for edit button clicks
+    $('#inventoryTable').on('click', '.edit-btn', function() {
         const data = $(this).data();
         $('#edit_id').val(data.id);
         $('#edit_device_name').val(data.device_name);
@@ -249,6 +249,7 @@ $(document).ready(function() {
         $('#editModal').modal('show');
     });
 });
+
 
 </script>
 </body>
