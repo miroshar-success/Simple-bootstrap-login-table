@@ -87,7 +87,7 @@ $result = $conn->query($sql);
 
 <?php include 'logo.php'; ?>
 <?php include 'navbar.php'; ?>
-<div class="container">
+<div class="">
     <h2>Network Devices</h2>
     <form method="POST">
         <button type="submit" name="delete_selected" class="btn btn-danger bulk-delete" style="margin: 20px 0">Delete Selected</button>
